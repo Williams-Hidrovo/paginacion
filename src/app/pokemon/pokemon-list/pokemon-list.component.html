@@ -1,0 +1,44 @@
+<h1 class="mt-5">Listado de Pokemons</h1>
+<button
+  (click)="backPage()"
+  style="
+    background-color: cornflowerblue;
+    width: 100px;
+    height: 35px;
+    margin-right: 20px;
+  "
+>
+  Anteriores
+</button>
+<button
+  (click)="nextPage()"
+  style="background-color: cornflowerblue; width: 100px; height: 35px"
+>
+  Siguientes
+</button>
+<div style="display: flex; flex-wrap: wrap; width: 100%">
+  <button
+    *ngFor="let item of arrayPaginas"
+    (click)="saltarPagina(item)"
+    style="width: 25px; height: 25px; background-color: aquamarine"
+  >
+    {{ item }}
+  </button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Sprite</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of pokemons | filtro : pagina">
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td><img [src]="item.img" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
